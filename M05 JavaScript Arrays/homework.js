@@ -61,15 +61,10 @@ function arrayContiene(array, elemento) {
    // Verifica si el elemento existe dentro del arreglo recibido.
    // Retornar true si está, o false si no está.
    // Tu código:
-   for(let i = 0; i < array.length; i++){
-      if(array[i]=== elemento){
-         return true
-      }else{
-         return false
-      }
+   let incluyeValor = array.includes(elemento);
+   return incluyeValor
    }
 
-}
 
 function agregarNumeros(arrayOfNums) {
    // El parámetro "arrayOfNums" debe ser un arreglo de números.
@@ -114,10 +109,16 @@ function multiplicarArgumentos() {
    // [PISTA]: "arguments" es un arreglo.
    // Tu código:
    let multiplicacion = 1;
-   for(let i = 0; i < arguments.length; i++){
-      multiplicacion = multiplicacion * arguments[i]
+   if(arguments.length > 0){
+      for(let i = 0; i < arguments.length; i++){
+         multiplicacion = multiplicacion * arguments[i]
+      }
+      return multiplicacion
+   }else{
+      return 0
    }
-   return multiplicacion
+
+   
 }
 
 function cuentoElementos(array) {
@@ -141,7 +142,7 @@ function diaDeLaSemana(numeroDeDia) {
    // si el día corresponde a "Sábado" o "Domingo", y "Es dia laboral" en caso contrario.
    // Tu código:
    let diasHabieles = ['Es fin de semana', 'Es dia laboral', 'Es dia laboral', 'Es dia laboral', 'Es dia laboral', 'Es dia laboral', 'Es fin de semana']
-   let dia = diasHabieles[numeroDeDia]
+   let dia = diasHabieles[numeroDeDia-1]
    return dia
 }
 
@@ -175,18 +176,46 @@ function mesesDelAño(array) {
    // "Marzo" y "Noviembre", guardarlos en un nuevo arreglo y retornarlo.
    // Si alguno de los meses no está, retornar el string: "No se encontraron los meses pedidos".
    // Tu código:
+   let mesAlmacenado = []
+   let respuesta;
+   for (let i = 0; i < array.length; i++) {
+      if (array[i] === 'Enero' || array[i] === 'Marzo' || array[i] === 'Noviembre') {
+         mesAlmacenado.push(array[i])
+      }
+   }
+
+   respuesta = mesAlmacenado.includes('Enero', 'Marzo', 'Noviembre')
+   if (respuesta === true) {
+      return mesAlmacenado
+   } else {
+      return "No se encontraron los meses pedidos"
+   }
 }
+
 
 function tablaDelSeis() {
    // Escribe una función que muestre la tabla de multiplicar del 6 (del 0 al 60).
    // La función devuelve un arreglo con los resultados de la tabla de multiplicar del 6 en orden creciente.
    // Tu código:
+   let tablaDel6 = []
+   for(let i = 0; i < 11; i++){
+      valor = 6 * i
+      tablaDel6.push(valor)
+   }
+   return tablaDel6
 }
 
 function mayorACien(array) {
    // La función recibe un arreglo con enteros entre 0 y 200.
    // Recorrerlo y retornar un arreglo con todos los valores mayores a 100 (no incluye el 100).
    // Tu código:
+   let mayores = []
+   for (let i = 0; i < array.length; i++) {
+      if (array[i] > 100) {
+         mayores.push(array[i])
+      }
+   }
+   return mayores
 }
 
 /* ----------------------------------------------------------------------------------
@@ -200,6 +229,16 @@ function breakStatement(num) {
    // la ejecución y retornar el string: "Se interrumpió la ejecución".
    // [PISTA]: utiliza el statement 'break'.
    // Tu código:
+
+   let nuevoAreglo = []
+   for(let i = 0; i < 10; i++){
+      num = num + 2;
+      nuevoAreglo.push(num)
+      if(i === num){
+         return "Se interrumpió la ejecución"
+         
+      }
+   }return nuevoAreglo
 }
 
 function continueStatement(num) {
@@ -209,6 +248,15 @@ function continueStatement(num) {
    // se continua con la siguiente iteración.
    // [PISTA]: utiliza el statement 'continue'.
    // Tu código:
+   let nuevoAreglo = []
+   for(let i = 0; i < 10; i++){
+      if(i === 5){
+         continue;
+      }else{
+         num = num + 2;
+         nuevoAreglo.push(num)
+      }
+   }return nuevoAreglo
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
